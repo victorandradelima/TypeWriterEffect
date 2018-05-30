@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Writing Effect</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		function sleep(milliseconds) {
+			var start = new Date().getTime();
+				for (var i = 0; i < 1e7; i++) {
+					if ((new Date().getTime() - start) > milliseconds){
+					break;
+				}
+			}
+		}
+
+		function changeText(config){
+			var Otext=config["originText"].text();
+			var Ocontent=Otext.split("");
+			var i=0;
+			var testBreakLine = "";
+			function show(){
+				var temp_i = parseInt(i);
+				var temp_i_breakline = temp_i + parseInt(config["breakLine"].length);
+				var j = 0;
+				if(i<Ocontent.length)
+				{
+					if (i == 0){
+						config["targetText"].append(config["initLine"]);
+					}
+					if (Ocontent[i] == config["breakLine"][0]) {
+						testBreakLine = Otext.substring(temp_i, temp_i_breakline);
+						if(config["breakLine"] == testBreakLine){
+							sleep(config["sleepLineBreak"]);
+							if (config["mode"] == 0){
+								config["targetText"].append(config["finalLine"]);
+								config["targetText"].append("<br/>");
+								config["targetText"].append(config["initLine"]);
+							}else{
+								config["targetText"].html("");
+								config["targetText"].append(config["initLine"]);
+							}
+							i = i + parseInt(config["breakLine"].length);
+						}
+					}
+					config["targetText"].append(Ocontent[i]);
+					i=i+1;
+				};
+			};
+			console.log(config["speed"]);
+			var Otimer=setInterval(show, config["speed"]);	
+		};
+		$(document).ready(function(){
+			var configwritingeffect = {
+				initLine: "[victor@lima]:~# ",
+				finalLine: "",
+				breakLine: "/n/",
+				speed: 50,
+				originText: $(".origin"),
+				targetText: $(".target"),
+				sleepLineBreak: 0,//milliseconds
+				mode: 0, // 0 - terminal, 1 - replace
+			};
+			changeText(configwritingeffect);
+		});
+	</script>
+	<style type="text/css">
+		body{
+		    padding: 0;
+		    margin: 1rem;
+		    font-family: sans-serif;
+		    background: #56a074;
+		    color: #ffffff;
+
+		}
+
+		.origin{
+			display: none;
+		}
+
+		.target{
+			background: #000;
+			padding: 1rem;
+			color: #0f0;
+			font-family: monospace;
+			min-height: 400px;
+			line-height: 1.1rem;
+		}
+	</style>
+</head>
+<body>
+
+	<h2>Typing Effect (Terminal mode)</h2>
+
+	<p class="origin">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit./n/
+		Ut enim ad minim veniam, quis nostrud exercitation./n/
+		Duis aute irure dolor in reprehenderit in voluptate velit. /n/
+		Excepteur sint occaecat cupidatat non proident.
+	</p>
+
+	<p class="target">
+		
+	</p>
+</body>
+</html>
