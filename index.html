@@ -47,6 +47,10 @@
 					}
 					config["targetText"].append(Ocontent[i]);
 					i=i+1;
+				}else{
+					alert("Aqui parou");
+					clearInterval(Otimer);
+
 				};
 			};
 			console.log(config["speed"]);
@@ -80,7 +84,7 @@
 			display: none;
 		}
 
-		.target{
+		.targetArea{
 			background: #000;
 			padding: 1rem;
 			color: #0f0;
@@ -88,21 +92,35 @@
 			min-height: 400px;
 			line-height: 1.1rem;
 		}
+
+		.indicator {
+			border-right: .05em solid;
+			animation: caret 2s steps(1) infinite;
+		}
+
+		@keyframes caret {
+			50% {
+				border-color: transparent;
+			}
+		}
 	</style>
 </head>
 <body>
 
 	<h2>Typing Effect (Terminal mode)</h2>
 
-	<p class="origin">
+	<span class="origin">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit./n/
 		Ut enim ad minim veniam, quis nostrud exercitation./n/
 		Duis aute irure dolor in reprehenderit in voluptate velit. /n/
 		Excepteur sint occaecat cupidatat non proident.
-	</p>
+	</span>
 
-	<p class="target">
-		
-	</p>
+
+	<div class="targetArea">
+		<span class="target"></span><span class="indicator"></span>
+	</div>
+
+
 </body>
 </html>
