@@ -12,7 +12,7 @@ Um script simples, que simula o efeito de digitação a partir de uma origem de 
 
 ### Instalando (Installing)
 
-1 - Basta adicionar as funções presentes no <head> da página, e configurar os dado presentes no vetor config na chamada da função
+1 - Basta adicionar as funções presentes no head da página, e configurar os dado presentes no vetor config na chamada da função
 
 ## Executando os testes (Running the tests)
 
@@ -20,7 +20,7 @@ Um script simples, que simula o efeito de digitação a partir de uma origem de 
 
 ### Arquivos de estilo, scripts e marcação (Style, script, and markup files)
 
-1 - Todos os dados presentes na tag <head> do código html
+1 - Todos os dados presentes na tag head do código html
 
 ## Contruído com ... (Built With)
 
